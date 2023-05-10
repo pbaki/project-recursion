@@ -13,6 +13,17 @@ function fibIteration(n) {
 
 //console.log(fibIteration(12));
 
+function fibonacciRecursive(n) {
+  if (n <= 1) {
+    return n;
+  } else {
+    //2 trees
+    return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+  }
+}
+
+//console.log(fibonacciRecursive(6));
+
 function fibRec(n) {
   if (n == 1) {
     return [0];
@@ -20,8 +31,8 @@ function fibRec(n) {
     return [0, 1];
   } else {
     let result = fibRec(n - 1);
-    let add = result[result.length - 1] + result[result.length - 2];
-    result.push(add);
+    let nextNumber = result[result.length - 1] + result[result.length - 2];
+    result.push(nextNumber);
     return result;
   }
 }
