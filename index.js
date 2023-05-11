@@ -38,3 +38,37 @@ function fibRec(n) {
 }
 
 //console.log(fibRec(3));
+
+function mergeSort(n) {
+  let middle = n.length / 2;
+  let firstHalf = n.slice(0, middle);
+  let secondHalf = n.slice(middle, n.length);
+  if (n.length < 2) {
+    return n;
+  }
+  if (n.length > 1) {
+    let first = mergeSort(firstHalf);
+    let second = mergeSort(secondHalf);
+    let finish = merge(first, second);
+    return finish;
+  }
+}
+
+function merge(arr1, arr2) {
+  let mergeArr = [];
+  while (arr1.length >= 1 && arr2.length >= 1) {
+    if (arr1[0] < arr2[0]) {
+      mergeArr.push(arr1.shift());
+    } else {
+      mergeArr.push(arr2.shift());
+    }
+  }
+  if (arr1.length == 0 && arr2.length !== 0) {
+    mergeArr = mergeArr.concat(arr2);
+  } else if (arr2.length == 0 && arr1.length !== 0) {
+    mergeArr = mergeArr.concat(arr1);
+  }
+  return mergeArr;
+}
+
+//console.log(mergeSort([5, 4, 2, 3, 1, 6, 7, 8, 6, 3, 7]));
